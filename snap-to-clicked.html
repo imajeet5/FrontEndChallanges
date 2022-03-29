@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/style.css" />
+</head>
+
+<style>
+    html {
+        position: absolute;
+
+        padding: 0;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        font-size: 20px;
+
+        overflow: scroll;
+        scroll-snap-type: both mandatory;
+    }
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+        grid-gap: 5px;
+    }
+
+    .grid-container>div {
+        box-sizing: border-box;
+        width: 400px;
+        height: 400px;
+        border-radius: 10px;
+        background-position: center;
+
+    }
+
+    .grid-container>div:active {
+        /* 
+      This is the main trick - make the active element the only
+      snap area and the scroller will snap to it!
+      */
+        scroll-snap-align: center;
+
+        /* 
+      This is just a hack to cause layout to force a re-snap
+      this wouldn't be needed in the final version
+      */
+        border: 2px hsla(180, 30%, 30%, 0.5) solid;
+    }
+
+    .grid-container>div:nth-child(3n) {
+        background-image: url(https://source.unsplash.com/random/400x400/?cat);
+    }
+
+    .grid-container>div:nth-child(3n+1) {
+        background-image: url(https://source.unsplash.com/random/400x400/?bird);
+    }
+
+    .grid-container>div:nth-child(3n+2) {
+        background-image: url(https://source.unsplash.com/random/400x400/?dog);
+    }
+</style>
+
+<body>
+    <div class="grid-container">
+        <div>
+        </div>
+        <div>
+        </div>
+        <div>
+        </div>
+        <div>
+        </div>
+        <div>
+        </div>
+        <div>
+        </div>
+        <div>
+        </div>
+        <div>
+        </div>
+        <div>
+        </div>
+        <div>
+        </div>
+        <div>
+        </div>
+        <div>
+        </div>
+        <div>
+        </div>
+        <div>
+        </div>
+        <div>
+        </div>
+        <div>
+        </div>
+    </div>
+</body>
+
+</html>

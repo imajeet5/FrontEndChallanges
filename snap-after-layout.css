@@ -1,0 +1,72 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+
+  /* Enable Safari touch scrolling physics which is needed for scroll snap */
+  -webkit-overflow-scrolling: touch;
+
+  scroll-snap-type: y mandatory;
+
+  /* suppress scroll anchoring to see the effect */
+  overflow-anchor: none;
+}
+
+section {
+  /* snap align start */
+  scroll-snap-align: start;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  border-top: 2px black solid;
+  font-size: 36px;
+}
+
+section.large {
+  height: 22vh;
+  background-color: #DCEDC8;
+}
+section.medium {
+  height: 10vh;
+  background-color: #2196f3;
+}
+section.small {
+  height: 6vh;
+  background-color: #26a69a;
+}
+
+section.new {
+  height: 7vh;
+  background-color: #cddc39;
+  
+  scroll-snap-align: none !important;
+
+}
+
+header {
+  position: fixed;
+
+
+  width: 100%;
+  top: 50%;
+  height: 10vh;
+  padding: 10px;
+
+  background: lightgrey;
+  color: #212121;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+header > div.buttons{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+button {
+  margin: 10px;
+  padding: 5px;
+}

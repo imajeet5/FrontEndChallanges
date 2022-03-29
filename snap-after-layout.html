@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="./snap-after-layout.css">
+  </head>
+
+ 
+  <header>
+    <div class="buttons">
+      <button onclick="addNew()">Add New Section</button>
+      <button onclick="addNewAndSnap()">Add New Section & Force Snap</button>
+    </div>  
+    <p> 
+      Adding new sections may cause reflows but does not *currently* cause re-snap.
+      So it can cause container to no longer be aligned to snap areas.
+      The second button forces an articial snapping using `scrollBy` methods to simulate the correct behavior.
+    </p>
+  </header>
+
+  <section class="small">Section Small</section>
+  <section class="small">Section Small</section>
+  <section class="small">Section Small</section>
+  <section class="medium">Section Medium</section>
+  <section class="medium">Section Medium</section>
+  <section class="large">Section Large</section>
+  <section class="small">Section Small</section>
+  <section class="small">Section Small</section>
+  <section class="small">Section Small</section>
+  <section class="medium">Section Medium</section>
+  <section class="medium">Section Medium</section>
+  <section class="large">Section Large</section>
+  <section class="small">Section Small</section>
+  <section class="small">Section Small</section>
+  <section class="small">Section Small</section>
+  <section class="medium">Section Medium</section>
+  <section class="medium">Section Medium</section>
+  <section class="large">Section Large</section>
+</html>
+
+<script>
+  // Scroll half-way to make it easier to see the effect
+  document.scrollingElement.scrollBy(0, 500);
+  
+  function addNew() {
+    let newNode = document.createElement("section");
+    newNode.classList.add("new");
+    newNode.innerText="New (not a snap area)";
+
+    const children = document.body.children;
+    let rand = Math.floor(Math.random() * (children.length - 1));
+    document.body.insertBefore(newNode, children[rand]);
+  }
+
+  function addNewAndSnap() {
+    addNew();
+    // A small amount of programmatic scrolling forces snapping
+    // in Chrome and Firefox.
+    document.scrollingElement.scrollBy(0, 1);
+    document.scrollingElement.scrollBy(0, -1);
+
+  }
+</script>
