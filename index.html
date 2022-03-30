@@ -5,17 +5,43 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css"> 
+    <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
 
 <body>
-    
-    
-    <h1>Hi There</h1>
 
-    <script src="script.js"></script>
+    <style>
 
-</body>
+    </style>
+
+    <body>
+        <h1>Infinite Scroll</h1>
+        <p>Server response delay:</p><select id=delay-select name=delay-select>
+            <option value=0>0ms
+            <option value=50>50ms
+            <option value=500>500ms
+            <option value=1000>1000ms
+            <option value=2000>2000ms
+            <option value=5000>5000ms
+        </select>
+        <div id=infinite-scroll-container>
+            <div id=sentinel></div>
+            <div class=item>A</div>
+            <div class=item>B</div>
+            <div class=item>C</div>
+            <div class=item>D</div>
+            <div class=item>E</div>
+            <button disabled id=infinite-scroll-button>
+                <span class=disabled-text>Loading more items...</span>
+                <span class=active-text>Show more</span>
+            </button>
+            <div class=footer>Privacy Policy | About Us | Corporate | Like & Subscribe</div>
+        </div>
+
+
+        <script src="script.js"></script>
+
+    </body>
 
 </html>
