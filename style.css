@@ -55,6 +55,9 @@ select {
 #sentinel {
   position: absolute;
   bottom: 150vh;
+  width: 100%;
+  height: 3px;
+  background-color: red;
 }
 
 #infinite-scroll-button {
@@ -63,6 +66,8 @@ select {
   padding: 1em;
   width: 100%;
   font-size: 1em;
+  border-top: 2px solid indigo;
+  border-bottom: 2px solid chartreuse;
 }
 
 #infinite-scroll-button:enabled {

@@ -60,6 +60,8 @@ function infiniteScroll() {
       containerEl.insertBefore(el, loadingButtonEl);
       console.log(`inserted: ${data}`);
     }
+    // here we will start observing the sentinel element again
+    // bcz we again want to make a new request based on sentinel element position
     sentinelObserver.observe(sentinelEl);
     if (hasMore === false) {
       loadingButtonEl.style = 'display: none';
@@ -81,14 +83,22 @@ function infiniteScroll() {
       loadingButtonEl.disabled = false;
     });
   };
+
+  //sentinelObserver observes the position of the #sentinel element. When the sentinel becomes visible, more content is requested from the server. Adjusting the position of the sentinel is a way of controlling how far in advance that new content should be requested from the server.
   const sentinelObserver = new IntersectionObserver((entries, observer) => {
     entries.forEach((entry) => {
       if (entry.intersectionRatio > 0) {
+        //   We will stop observing the sentinel Element here, as once it is in the viewport request to server
+        // is send, to until the new content is added we are not observing the sentinel Observer.
+        // When the new content is added new sentinel observer will be at new position adn we will observer, that again
+        // also if the user scroll up and again scroll down we don't want to request to server again
         observer.unobserve(sentinelEl);
         requestHandler();
       }
     });
   });
+
+  //listObserver observes the position of the #infinite-scroll-button that is located at the end of the infinite scroll list. When the button is nearing the viewport, uninserted content is added to the DOM.
   const listObserver = new IntersectionObserver(
     (entries, observer) => {
       entries.forEach((entry) => {
