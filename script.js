@@ -41,6 +41,10 @@ function createObserver() {
     threshold: buildThresholdList(),
   };
 
+  /** 
+   * Without 'options' the callback will be triggered when the element isIntersecting value changes
+   */
+  
   observer = new IntersectionObserver(handleIntersect, options);
   observer.observe(boxElement);
 }
