@@ -1,0 +1,26 @@
+body {
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  margin: 0;
+  padding: 0;
+  background-color: #c4dae3;
+}
+
+#grid {
+  background-color: azure;
+  display: grid;
+  gap: 1px;
+}
+
+.box {
+  height: 30px;
+  width: 30px;
+
+  border: 1px solid black;
+  border-radius: 3px;
+}
+
+.box.last-row {
+  cursor: pointer;
+}

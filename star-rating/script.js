@@ -62,9 +62,24 @@ class Star {
     this.fill(this.active);
   }
 
+  onClick(e) {
+    //from the currently clicked element we get the element index
+    const ratingVal = e.target.dataset.ratingVal;
+    if (!ratingVal) {
+      return;
+    }
+    this.active = ratingVal;
+
+    // fill the clicked number of start
+    this.fill(this.active);
+    // we have to update the new rating
+    this.callback(this.active);
+  }
+
   bindEvent() {
     this.el.addEventListener('mouseover', this.onMouseOver.bind(this));
     this.el.addEventListener('mouseleave', this.onMouseLeave.bind(this));
+    this.el.addEventListener('click', this.onClick.bind(this));
   }
 }
 
