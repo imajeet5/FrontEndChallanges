@@ -96,3 +96,18 @@ window.addEventListener('scroll', () => {
 // initialize
 loadQuotes(currentPage, limit);
 
+document.addEventListener("visibilitychange", (event) => {
+    if (document.visibilityState == "visible") {
+        console.log("tab is active")
+    } else {
+        console.log("tab is inactive")
+    }
+});
+
+window.onfocus = function (ev) {
+    console.log("gained focus");
+};
+
+window.onblur = function (ev) {
+    console.log("lost focus");
+};
